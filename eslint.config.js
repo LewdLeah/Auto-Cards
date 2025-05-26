@@ -9,6 +9,8 @@ export default tseslint.config([
   tseslint.configs.recommended,
   eslintConfigPrettier,
   {
+    files: ["**/*.js"],
+    ignores: ["utils/**"],
     rules: {
       "no-undef": "off",
       "no-var": "error",
@@ -18,18 +20,23 @@ export default tseslint.config([
       "prefer-regex-literals": ["error", { disallowRedundantWrapping: true }],
       quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],
       "space-before-blocks": ["error", "always"]
-    }
-  },
-  {
-    files: ["context.js", "input.js", "library.js", "output.js"],
+    },
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "script",
-      globals: globals.es2024
+      globals: globals.es2022
     }
   },
   {
-    files: ["tools/*.js", "utils/**/*.js"],
+    files: ["utils/**/*.js"],
+    rules: {
+      "no-var": "error",
+      "prefer-const": ["error", { destructuring: "all" }],
+      "prefer-promise-reject-errors": "error",
+      "prefer-regex-literals": ["error", { disallowRedundantWrapping: true }],
+      quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],
+      "space-before-blocks": ["error", "always"]
+    },
 		languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
