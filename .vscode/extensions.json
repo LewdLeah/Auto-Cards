@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
 		"usernamehw.errorlens",
-		"xyz.local-history"
+    "xyz.local-history",
+    "remcohaszing.schemastore"
   ]
 }

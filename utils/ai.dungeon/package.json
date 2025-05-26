@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "ai.dungeon",
+  "description": "Upload changes to AI Dungeon scenarios",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./index.js"
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@types/watchpack": "^2.4.4"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "terser": "^5.39.2",
+    "watchpack": "^2.4.2"
+  }
+}

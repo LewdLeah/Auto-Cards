@@ -10,15 +10,17 @@
   },
   "type": "module",
   "scripts": {
-    "minify": "terser ./src/library.js -c -o library.min.js"
+    "run:Dev": "dotenvx run --env AID_ENV=development -f .env --quiet -- node ./utils/ai.dungeon/index.js",
+    "run:Prod": "dotenvx run --env AID_ENV=production -f .env --quiet -- node ./utils/ai.dungeon/index.js"
   },
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.44.1",
     "@eslint/js": "^9.27.0",
+    "ai.dungeon": "workspace:^",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "globals": "^16.1.0",
     "prettier": "^3.5.3",
-    "terser": "^5.39.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1"
   },

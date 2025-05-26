@@ -1,3 +1,4 @@
+/// <reference types="./types/global.d.ts" />
 // Your "Library" tab should look like this
 
 // [source code not public yet]
