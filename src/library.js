@@ -3341,12 +3341,12 @@ function AutoCards(inHook, inText, inStop) {
                 return 1;
             }
             // Normalize both strings for further comparison purposes
-            const [cleanA, cleanB] = [strA, strB].map(str => (str
+            const [cleanA, cleanB] = [strA, strB].map(str => limitString((str
                 .replace(/[0-9\s]/g, " ")
                 .trim()
                 .replace(/  +/g, " ")
                 .toLowerCase()
-            ));
+            ), 1400));
             if (cleanA === cleanB) {
                 return 1;
             }
