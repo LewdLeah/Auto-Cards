@@ -1,4 +1,5 @@
 // Your "Library" tab should look like this
+
 /*
 Auto-Cards
 Made by LewdLeah on May 21, 2025
@@ -494,6 +495,7 @@ function AutoCards(inHook, inText, inStop) {
     const CODOMAIN = new Const().declare();
     // Transient sets for high-performance lookup
     const [used, bans, auto, forenames, surnames] = Array.from({length: 5}, () => new Set());
+    const memoized = new Map();
     // Holds a reference to the data card singleton, remains unassigned unless required
     let data = null;
     // Validate globalThis.text
@@ -5488,11 +5490,29 @@ function AutoCards(inHook, inText, inStop) {
         return String.fromCharCode(...arr.map(n => Math.sqrt(n / 33)));
     }
     function formatTitle(title) {
+        const input = title;
+        let useMemo = false;
+        if (
+            (AC.database.titles.used.length === 1)
+            && (AC.database.titles.used[0] === ("%@%"))
+            && [used, forenames, surnames].every(nameset => (
+                (nameset.size === 1)
+                && nameset.has("%@%")
+            ))
+        ) {
+            const pair = memoized.get(input);
+            if (pair !== undefined) {
+                if (50000 < memoized.size) {
+                    memoized.delete(input);
+                    memoized.set(input, pair);
+                }
+                return O.f({newTitle: pair[0], newKey: pair[1]});
+            }
+            useMemo = true;
+        }
         title = title.trim();
-        const failureCase = O.f({newTitle: "", newKey: ""});
         if (short()) {
-            // This is an abundantly called function, return as early as possible to ensure superior performance
-            return failureCase;
+            return end();
         }
         title = (title
             // Begone!
@@ -5514,7 +5534,7 @@ function AutoCards(inHook, inText, inStop) {
             .replace(/^-+\s*/, "").replace(/\s*-+$/, "")
         );
         if (short()) {
-            return failureCase;
+            return end();
         }
         // Special-cased words
         const minorWordsJoin = Words.minor.join("|");
@@ -5523,7 +5543,7 @@ function AutoCards(inHook, inText, inStop) {
         // Ensure the title is not bounded by any outer minor words
         title = enforceBoundaryCondition(title);
         if (short()) {
-            return failureCase;
+            return end();
         }
         // Ensure interior minor words are lowercase and excise all interior honorifics/abbreviations
         const honorAbbrevsKiller = new RegExp("(?:^|\\s|-|\\/)(?:" + (
@@ -5546,7 +5566,7 @@ function AutoCards(inHook, inText, inStop) {
             .trim()
         );
         if (short()) {
-            return failureCase;
+            return end();
         }
         let titleWords = title.split(" ");
         while ((2 < title.length) && (98 < title.length) && (1 < titleWords.length)) {
@@ -5559,14 +5579,14 @@ function AutoCards(inHook, inText, inStop) {
             }
         }
         if (isUsedOrBanned(title) || isNamed(title)) {
-            return failureCase;
+            return end();
         }
         // Procedurally generated story card trigger keywords exclude certain words and patterns which are otherwise permitted in titles
         let key = title;
         const peerage = new Set(Words.peerage);
         if (titleWords.some(word => ((word === "the") || peerage.has(word.toLowerCase())))) {
             if (titleWords.length < 2) {
-                return failureCase;
+                return end();
             }
             key = enforceBoundaryCondition(
                 titleWords.filter(word => !peerage.has(word.toLowerCase())).join(" ")
@@ -5575,7 +5595,7 @@ function AutoCards(inHook, inText, inStop) {
                 key = enforceBoundaryCondition(key.split(" the ")[0]);
             }
             if (isUsedOrBanned(key)) {
-                return failureCase;
+                return end();
             }
         }
         function short() {
@@ -5590,7 +5610,16 @@ function AutoCards(inHook, inText, inStop) {
             }
             return str;
         }
-        return O.f({newTitle: title, newKey: key});
+        function end(newTitle = "", newKey = "") {
+            if (useMemo) {
+                memoized.set(input, [newTitle, newKey]);
+                if (55000 < memoized.size) {
+                    memoized.delete(memoized.keys().next().value);
+                }
+            }
+            return O.f({newTitle, newKey});
+        }
+        return end(title, key);
     }
     // I really hate english grammar
     function checkPlurals(title, predicate) {
