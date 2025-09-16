@@ -16,7 +16,7 @@ function AutoCards(inHook, inText, inStop) {
     */
 
     // Is Auto-Cards already enabled when the adventure begins?
-    const DEFAULT_DO_AC = true
+    const DEFAULT_DO_AC = false
     // (true or false)
 
     // Pin the "Configure Auto-Cards" story card at the top of the player's story cards list?
