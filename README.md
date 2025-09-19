@@ -15,7 +15,7 @@ Auto-Cards is a plug-and-play scenario script for AI Dungeon that watches your s
 ## Permission
 Auto-Cards is both free and open source for anyone to use within their own scenarios or scripts, even including published works. General-purpose usefulness and compatibility were my top design priorities. You have my full permission to use, copy, or modify Auto-Cards. Please be respectful of the fact that not everyone wants to use Auto-Cards, so never beg, demand, harass, or otherwise annoy creators about installing Auto-Cards into their scenarios. Now, please enjoy! ❤️
 ## Scenario Script Installation Guide
-0. Please consider installing [Localized Languages instead](https://github.com/LewdLeah/Localized-Languages?tab=readme-ov-file#scenario-script-installation-guide), it includes a superior version of Auto-Cards
+0. Please consider installing [Localized Languages](https://github.com/LewdLeah/Localized-Languages?tab=readme-ov-file#scenario-script-installation-guide) instead, it includes a superior version of Auto-Cards
 1. Use the [AI Dungeon website](https://aidungeon.com/) on PC (or view as desktop if mobile-only)
 2. [Create a new scenario](https://help.aidungeon.com/faq/what-are-scenarios) or edit one of your existing scenarios
 3. Open the `DETAILS` tab at the top while editing your scenario
