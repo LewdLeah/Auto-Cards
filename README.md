@@ -75,4 +75,4 @@ modifier(text);
 ### Auto-Cards discussion thread
 - [Auto-Cards script testing & feedback](https://discord.com/channels/903327676884979802/1347300413652734064/1347300413652734064)
 - [AI Dungeon official Discord server invite](https://discord.gg/MXNqpSbuZT) (required to access the first link)
-- Just ping me any time @LewdLeah to talk
+- Feel free to ping me anytime @LewdLeah if you'd like to chat or share ideas. But please remember this is a personal passion project for me, something I do because I enjoy it, not as a job. Your kindness, patience, and love mean so much to me~ ❤️
