@@ -237,11 +237,11 @@ function AutoCards(inHook, inText, inStop) {
     *      entryStart: "You are a woman named Leah.", // Existing content to prepend to the AI-generated entry
     *      entryPrompt: "",           // Global prompt guiding AI content generation
     *      entryPromptDetails: "Focus on Leah's works of artifice and ingenuity", // Additional prompt info
-    *      entryLimit: 750,           // Target character length for the AI-generated entry
+    *      entryLimit: 600,           // Target character length for the AI-generated entry
     *      description: "Player character!", // Freeform notes
     *      memoryStart: "Leah purchased a new sweater.", // Existing memory content
     *      memoryUpdates: true,       // Whether the card's memory bank will update on its own
-    *      memoryLimit: 2750          // Preferred memory bank size before summarization/compression
+    *      memoryLimit: 3200          // Preferred memory bank size before summarization/compression
     *    });
     * 
     * 2. String Mode:
@@ -910,11 +910,11 @@ function AutoCards(inHook, inText, inStop) {
                     //     entryStart: "preexisting card entry",
                     //     entryPrompt: "prompt the AI will use to complete this entry",
                     //     entryPromptDetails: "extra details to include with this card's prompt",
-                    //     entryLimit: 750, // target character count for the generated entry
+                    //     entryLimit: 600, // target character count for the generated entry
                     //     description: "card notes",
                     //     memoryStart: "preexisting card memory",
                     //     memoryUpdates: true, // card updates when new relevant memories are formed
-                    //     memoryLimit: 2750, // max characters before the card memory is compressed
+                    //     memoryLimit: 3200, // max characters before the card memory is compressed
                     // });
                     if (typeof request === "string") {
                         request = {title: request};
@@ -4022,11 +4022,11 @@ function AutoCards(inHook, inText, inStop) {
             //     entryStart: "preexisting card entry",
             //     entryPrompt: "prompt the AI will use to complete this entry",
             //     entryPromptDetails: "extra details to include with this card's prompt",
-            //     entryLimit: 750, // target character count for the generated entry
+            //     entryLimit: 600, // target character count for the generated entry
             //     description: "card notes",
             //     memoryStart: "preexisting card memory",
             //     memoryUpdates: true, // card updates when new relevant memories are formed
-            //     memoryLimit: 2750, // max characters before the card memory is compressed
+            //     memoryLimit: 3200, // max characters before the card memory is compressed
             // });
             const titleKeyPair = formatTitle((request.title ?? "").toString());
             const title = predefinedPair[0] || titleKeyPair.newTitle;
@@ -4245,7 +4245,7 @@ function AutoCards(inHook, inText, inStop) {
                     continue;
                 }
                 // An ideal auto-card's entry starts with "{title: Example of Greatness}" (example)
-                // An ideal auto-card's description contains "{updates: true, limit: 2750}" (example)
+                // An ideal auto-card's description contains "{updates: true, limit: 3200}" (example)
                 if (checkPlurals(denumberName(card.title.replace("\n", "")), t => isBanned(t))) {
                     checkRemaining();
                     continue;
