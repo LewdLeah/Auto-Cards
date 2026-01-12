@@ -24,7 +24,7 @@ function AutoCards(inHook, inText, inStop) {
     // (true or false)
 
     // Minimum number of turns in between automatic card generation events?
-    const DEFAULT_CARD_CREATION_COOLDOWN = 22
+    const DEFAULT_CARD_CREATION_COOLDOWN = 28
     // (0 to 9999)
 
     // Use a bulleted list format for newly generated card entries?
@@ -32,7 +32,7 @@ function AutoCards(inHook, inText, inStop) {
     // (true or false)
 
     // Maximum allowed length for newly generated story card entries?
-    const DEFAULT_GENERATED_ENTRY_LIMIT = 750
+    const DEFAULT_GENERATED_ENTRY_LIMIT = 600
     // (200 to 2000)
 
     // Do newly generated cards have memory updates enabled by default?
@@ -40,7 +40,7 @@ function AutoCards(inHook, inText, inStop) {
     // (true or false)
 
     // Default character limit before the card's memory bank is summarized?
-    const DEFAULT_NEW_CARDS_MEMORY_LIMIT = 2750
+    const DEFAULT_NEW_CARDS_MEMORY_LIMIT = 3200
     // (1750 to 9900)
 
     // Approximately how much shorter should recently compressed memories be? (ratio = 10 * old / new)
@@ -369,7 +369,7 @@ function AutoCards(inHook, inText, inStop) {
     /*
     To everyone who helped, thank you:
 
-    AHotHamster22
+    AHotHamster
     Most extensive testing, feedback, ideation, and kindness
 
     BinKompliziert
@@ -1322,10 +1322,9 @@ function AutoCards(inHook, inText, inStop) {
                     "[\"alter leah\", () => {",
                     "    alterMind();",
                     "    const success = AutoCards().API.redoCard(\"Leah\", true, (",
-                    "        \"You subjected Leah to mind-altering magic\\n\" +",
+                    "        \"You used your magic on Leah\\n\" +",
                     "        \"Therefore she is now entirely \" +",
-                    "        minds[state.mind] +",
-                    "        \", utterly captivated by your will\"",
+                    "        minds[state.mind]",
                     "    ));",
                     "    if (success) {",
                     "        text = formatMessage(",
@@ -3921,7 +3920,7 @@ function AutoCards(inHook, inText, inStop) {
                 "❤️ Special Thanks",
                 "This project flourished due to the incredible help, feedback, and encouragement from the AI Dungeon community. Your ideas, bug reports, testing, and support made Auto-Cards smarter, faster, and more fun for all. Please refer to my source code to learn more about everyone's specific contributions",
                 "",
-                "AHotHamster22, BinKompliziert, Boo, bottledfox, Bruno, Burnout, bweni, DebaczX, Dirty Kurtis, Dragranis, effortlyss, Hawk, Idle Confusion, ImprezA, Kat-Oli, KryptykAngel, Mad19pumpkin, Magic, Mirox80, Nathaniel Wyvern, NobodyIsUgly, OnyxFlame, Purplejump, Randy Viosca, RustyPawz, sinner, Sleepy pink, Vutinberg, Wilmar, Yi1i1i",
+                "AHotHamster, BinKompliziert, Boo, bottledfox, Bruno, Burnout, bweni, DebaczX, Dirty Kurtis, Dragranis, effortlyss, Hawk, Idle Confusion, ImprezA, Kat-Oli, KryptykAngel, Mad19pumpkin, Magic, Mirox80, Nathaniel Wyvern, NobodyIsUgly, OnyxFlame, Purplejump, Randy Viosca, RustyPawz, sinner, Sleepy pink, Vutinberg, Wilmar, Yi1i1i",
                 "",
                 Words.delimiter,
                 "",
@@ -4602,13 +4601,13 @@ function AutoCards(inHook, inText, inStop) {
         }
     }); }
     function validateCooldown(cooldown) {
-        return boundInteger(0, cooldown, 9999, 22);
+        return boundInteger(0, cooldown, 9999, 28);
     }
     function validateEntryLimit(entryLimit) {
-        return boundInteger(200, entryLimit, 2000, 750);
+        return boundInteger(200, entryLimit, 2000, 600);
     }
     function validateMemoryLimit(memoryLimit) {
-        return boundInteger(1750, memoryLimit, 9900, 2750);
+        return boundInteger(1750, memoryLimit, 9900, 3200);
     }
     function validateMemCompRatio(memCompressRatio) {
         return boundInteger(20, memCompressRatio, 1250, 25);
